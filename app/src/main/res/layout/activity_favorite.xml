@@ -5,28 +5,37 @@
 
     <data>
         <variable name="viewModel" type="defy.tech.chiropractic.viewmodel.FavoriteViewModel"/>
-        <import type="android.view.View" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+        <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.onTextChanged(text, start, before, count)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
         <TextView
                 android:id="@+id/tv_hello"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.welcomeText}"
+                android:gravity="left"
+                app:layout_constraintTop_toBottomOf="@id/et_search"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"/>
 
         <Button
                 android:id="@+id/btn_hello"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="생성"
+                android:text="검색"
                 android:onClick="@{()->viewModel.createWelcome()}"
                 app:layout_constraintTop_toBottomOf="@id/tv_hello"
                 app:layout_constraintLeft_toLeftOf="parent"

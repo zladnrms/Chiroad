@@ -1,6 +1,9 @@
 package defy.tech.chiropractic.viewmodel
 
 import android.app.Application
+import android.view.View
+import androidx.databinding.Bindable
+import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -27,8 +30,11 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
         repository.delete(contact)
     }
 
-    fun createWelcome() : LiveData<String>  {
+    fun createWelcome() {
         welcomeText.value = "dd"
-        return welcomeText
+    }
+
+    fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        welcomeText.value = s.toString()
     }
 }
